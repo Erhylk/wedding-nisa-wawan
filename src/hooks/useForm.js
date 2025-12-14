@@ -1,39 +1,99 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GOOGLE_FORM, GOOGLE_SHEET_API } from "../constants/data";
+import { useInvitationStore } from "../store/invitationStore";
 
 export function useForm() {
-  const [form, setForm] = useState({ name: "", message: "" });
-  const [messages, setMessages] = useState([
-    { name: "Budi", message: "Selamat menempuh hidup baru!" },
-    { name: "Sari", message: "Semoga bahagia selalu!" },
-    { name: "Budi", message: "Selamat menempuh hidup baru!" },
-    { name: "Sari", message: "Semoga bahagia selalu!" },
-    { name: "Budi", message: "Selamat menempuh hidup baru!" },
-    { name: "Sari", message: "Semoga bahagia selalu!" },
-    { name: "Budi", message: "Selamat menempuh hidup baru!" },
-    { name: "Sari", message: "Semoga bahagia selalu!" },
-    { name: "Budi", message: "Selamat menempuh hidup baru!" },
-    { name: "Sari", message: "Semoga bahagia selalu!" },
-  ]);
+  const guestName = useInvitationStore((s) => s.guest?.name);
+
+  const [form, setForm] = useState({ message: "" });
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [loadingMessages, setLoadingMessages] = useState(true);
+
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
+  useEffect(() => {
+    fetch(GOOGLE_SHEET_API)
+    .then((res) => res.json())
+    .then((data) => {
+      setMessages(data.reverse());
+      console.log(data)
+    })
+    .catch((err) => {
+      console.error("Gagal memuat ucapan", err);
+    })
+    .finally(() => {
+      setLoadingMessages(false);
+    });
+  }, []);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ message: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.message) return;
 
-    setMessages([
-      ...messages,
-      { name: form.name || "Tamu", message: form.message },
-    ]);
-    setForm({ name: "", message: "" });
+    if (!form.message.trim()) {
+      setStatus({
+        type: "error",
+        message: "Ucapan tidak boleh kosong",
+      });
+      return;
+    }
+
+    setLoading(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      const fd = new FormData();
+      fd.append(GOOGLE_FORM.FIELDS.NAME, guestName || "Tamu Undangan");
+      fd.append(GOOGLE_FORM.FIELDS.MESSAGE, form.message);
+
+      await fetch(GOOGLE_FORM.ACTION_URL, {
+        method: "POST",
+        body: fd,
+        mode: "no-cors",
+      });
+
+      // optimistic update
+      setMessages((prev) => [
+        {
+          name: guestName || "Tamu Undangan",
+          message: form.message,
+        },
+        ...prev,
+      ]);
+
+      setForm({ message: "" });
+
+      setStatus({
+        type: "success",
+        message: "Ucapan berhasil dikirim 🤍",
+      });
+    } catch {
+      setStatus({
+        type: "error",
+        message: "Gagal mengirim ucapan",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return {
+    guestName,
     form,
     messages,
+    loading,
+    loadingMessages,
+    status,
     handleChange,
     handleSubmit,
+    clearStatus: () => setStatus({ type: "", message: "" }),
   };
 }

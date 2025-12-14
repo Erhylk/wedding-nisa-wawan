@@ -76,10 +76,10 @@ export default function Envelope() {
           <p className="text-neutral-600 mb-2">Kepada Yth.</p>
 
           <h2 className="text-2xl font-semibold text-neutral-700">
-            {guest.name}
+            {guest?.name}
           </h2>
 
-          {guest.address && (
+          {guest?.address && (
             <p className="text-xl text-neutral-500 mt-1">di {guest.address}</p>
           )}
 
