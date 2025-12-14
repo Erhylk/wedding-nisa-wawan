@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+.font-dm-serif {
+  font-family: "DM Serif Text", serif;
+}
+
+.font-dancing {
+  font-family: 'Dancing Script', cursive;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.animate-sway {
+  animation: sway 3s ease-in-out infinite;
+}
