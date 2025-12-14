@@ -8,7 +8,6 @@ export function useForm() {
   const [form, setForm] = useState({ message: "" });
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [loadingMessages, setLoadingMessages] = useState(true);
 
   const [status, setStatus] = useState({
@@ -18,17 +17,21 @@ export function useForm() {
 
   useEffect(() => {
     fetch(GOOGLE_SHEET_API)
-    .then((res) => res.json())
-    .then((data) => {
-      setMessages(data.reverse());
-      console.log(data)
-    })
-    .catch((err) => {
-      console.error("Gagal memuat ucapan", err);
-    })
-    .finally(() => {
-      setLoadingMessages(false);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        const ordered = [...data].reverse();
+        setMessages(ordered);
+      })
+      .catch((err) => {
+        console.error("Gagal memuat ucapan", err);
+        setStatus({
+          type: "error",
+          message: "Gagal memuat data ucapan",
+        });
+      })
+      .finally(() => {
+        setLoadingMessages(false);
+      });
   }, []);
 
   const handleChange = (e) => {
@@ -60,7 +63,6 @@ export function useForm() {
         mode: "no-cors",
       });
 
-      // optimistic update
       setMessages((prev) => [
         {
           name: guestName || "Tamu Undangan",
@@ -75,7 +77,8 @@ export function useForm() {
         type: "success",
         message: "Ucapan berhasil dikirim 🤍",
       });
-    } catch {
+    } catch (err) {
+      console.error(err);
       setStatus({
         type: "error",
         message: "Gagal mengirim ucapan",
