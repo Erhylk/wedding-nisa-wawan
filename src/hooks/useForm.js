@@ -19,8 +19,7 @@ export function useForm() {
     fetch(GOOGLE_SHEET_API)
       .then((res) => res.json())
       .then((data) => {
-        const ordered = [...data].reverse();
-        setMessages(ordered);
+        setMessages(data);
       })
       .catch((err) => {
         console.error("Gagal memuat ucapan", err);
