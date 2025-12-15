@@ -9,13 +9,50 @@ import {
   GROOM_MOTHER_NAME,
 } from "../constants/data";
 
-export default function Pengantin() {
-  const cardAnimation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut" },
-  };
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.3,
+    },
+  },
+};
 
+const itemUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const photoFloat = {
+  animate: {
+    y: [0, -4, 0],
+  },
+  transition: {
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  },
+};
+
+const nameReveal = {
+  hidden: { opacity: 0, y: 8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8 },
+  },
+};
+
+export default function Pengantin() {
   return (
     <InvitoLayout
       className="bg-neutral-200 bg-cover relative flex items-center"
@@ -59,42 +96,78 @@ export default function Pengantin() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 bg-white/20 backdrop-blur-md rounded-3xl shadow-lg lg:p-8 p-5 max-w-3xl mx-auto text-center text-white flex flex-col gap-8 mt-16"
-        {...cardAnimation}
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 bg-white/20 backdrop-blur-md rounded-3xl shadow-lg
+                   lg:p-8 p-5 max-w-3xl mx-auto text-white flex flex-col gap-5 lg:gap-8 mt-16"
       >
-        <h2 className="text-4xl font-bold text-pink-100 mb-2 font-dancing">
+        <motion.h2
+          variants={itemUp}
+          className="text-4xl font-semibold text-pink-100 font-dancing text-center"
+        >
           Kami yang Berbahagia
-        </h2>
+        </motion.h2>
+
+        {/* divider */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1 }}
+          className="h-px bg-white/40 w-24 mx-auto"
+        />
 
         {/* Pengantin Pria */}
-        <div className="flex-1 flex flex-row items-center gap-4 lg:gap-6">
-          <img
+        <motion.div
+          variants={itemUp}
+          className="flex items-center gap-4 lg:gap-6"
+        >
+          <motion.img
+            variants={photoFloat}
+            animate="animate"
             src="https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgrunge-left.png&w=1920&q=75"
             alt="Pengantin Pria"
             className="w-32 h-32 rounded-full object-cover border-2 border-white"
           />
-          <div className="text-left text-white">
-            <p className="lg:text-2xl text-xl font-bold">{GROOM_FULL_NAME}</p>
-            <p className="lg:text-md text-sm pr-4">
-              Putra dari Bapak {GROOM_FATHER_NAME} &amp; Ibu {GROOM_MOTHER_NAME}
+
+          <div className="text-left">
+            <motion.p
+              variants={nameReveal}
+              className="text-xl lg:text-3xl font-semibold tracking-wide"
+            >
+              {GROOM_FULL_NAME}
+            </motion.p>
+            <p className="text-xs lg:text-md pr-4">
+              Putra dari Bapak {GROOM_FATHER_NAME} & Ibu {GROOM_MOTHER_NAME}
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Pengantin Perempuan: teks kiri, foto kanan */}
-        <div className="flex-1 flex flex-row-reverse items-center gap-4 lg:gap-6">
-          <img
+        {/* Pengantin Wanita */}
+        <motion.div
+          variants={itemUp}
+          className="flex flex-row-reverse items-center gap-4 lg:gap-6"
+        >
+          <motion.img
+            variants={photoFloat}
+            animate="animate"
             src="https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgrunge-right.png&w=1920&q=75"
             alt="Pengantin Wanita"
             className="w-32 h-32 rounded-full object-cover border-2 border-white"
           />
-          <div className="text-right text-white">
-            <p className="lg:text-2xl text-xl font-bold">{BRIDE_FULL_NAME}</p>
-            <p className="lg:text-md text-sm pl-4">
-              Putri dari Bapak {BRIDE_FATHER_NAME} &amp; Ibu {BRIDE_MOTHER_NAME}
+
+          <div className="text-right">
+            <motion.p
+              variants={nameReveal}
+              className="text-xl lg:text-3xl font-semibold tracking-wide"
+            >
+              {BRIDE_FULL_NAME}
+            </motion.p>
+            <p className="text-xs lg:text-md pl-4">
+              Putri dari Bapak {BRIDE_FATHER_NAME} & Ibu {BRIDE_MOTHER_NAME}
             </p>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </InvitoLayout>
   );
