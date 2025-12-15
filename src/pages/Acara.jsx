@@ -18,28 +18,28 @@ export default function Acara() {
       }}
     >
       <div className="absolute inset-0 backdrop-blur-xs bg-black/20" />
+      <motion.div
+        className="absolute -right-20 -bottom-24 w-1/2 h-auto animate-sway transform scale-x-[-1]"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        <img src="https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Flower.png" />
+      </motion.div>
+
+      <motion.div
+        className="absolute -left-20 -top-24 transform scale-x-[-1] w-1/2 h-auto animate-sway"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <img src="https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Floral.png" />
+      </motion.div>
 
       <motion.div
         className="relative z-10 bg-black/40 backdrop-blur-md rounded-3xl shadow-lg lg:p-8 p-6 max-w-3xl w-full lg:mx-4 text-white"
         {...cardAnimation}
       >
-        <motion.div
-          className="absolute -right-20 -bottom-60 w-1/2 h-auto animate-sway transform scale-x-[-1]"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <img src="https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Flower.png" />
-        </motion.div>
-
-        <motion.div
-          className="absolute -left-20 -top-64 transform scale-x-[-1] w-1/2 h-auto animate-sway"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <img src="https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Floral.png" />
-        </motion.div>
         <h2 className="text-3xl font-bold text-pink-100 mb-6 text-center">
           Menuju Acara
         </h2>

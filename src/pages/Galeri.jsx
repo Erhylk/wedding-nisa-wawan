@@ -7,11 +7,11 @@ export default function Galeri() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   return (
-    <InvitoLayout className="bg-neutral-200 bg-cover relative flex flex-col items-center py-12 px-4">
+    <InvitoLayout className="bg-linear-to-b from-purple-200 via-pink-200 to-pink-100 bg-cover relative flex flex-col items-center py-12 px-4">
       <div className="absolute inset-0 bg-black/20" />
 
       <motion.h2
-        className="text-4xl font-bold text-pink-100 mb-12 relative z-10"
+        className="text-4xl font-bold text-pink-700 mb-12 relative z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

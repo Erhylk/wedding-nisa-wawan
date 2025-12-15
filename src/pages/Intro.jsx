@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import InvitoLayout from "../components/InvitoLayout";
-import { BRIDE_NICK_NAME, GROOM_NICK_NAME, TEXT_INTRO } from "../constants/data";
+import {
+  BRIDE_NICK_NAME,
+  GROOM_NICK_NAME,
+  TEXT_INTRO,
+} from "../constants/data";
 
 export default function Intro() {
   const cardAnimation = {
@@ -51,11 +55,11 @@ export default function Intro() {
           Assalamu'alaikum wr. wb
         </h2>
 
-        <p className="lg:text-lg">
-          {TEXT_INTRO}
-        </p>
+        <p className="lg:text-lg">{TEXT_INTRO}</p>
 
-        <p className="mt-6 text-pink-200 italic">{GROOM_NICK_NAME} &amp; {BRIDE_NICK_NAME}</p>
+        <p className="mt-6 text-pink-200 italic">
+          {GROOM_NICK_NAME} &amp; {BRIDE_NICK_NAME}
+        </p>
       </motion.div>
     </InvitoLayout>
   );
