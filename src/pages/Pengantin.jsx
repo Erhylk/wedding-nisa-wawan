@@ -57,7 +57,7 @@ const nameReveal = {
 export default function Pengantin() {
   return (
     <InvitoLayout
-      className="bg-neutral-200 bg-cover relative flex items-center"
+      className="bg-neutral-200 bg-cover bg-center relative flex items-center"
       style={{
         backgroundImage:
           "url('https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Background%20Cover.jpg')",

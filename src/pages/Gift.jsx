@@ -17,7 +17,7 @@ export default function WeddingGift() {
   };
 
   return (
-    <InvitoLayout className="bg-linear-to-b from-pink-200 via-neutral-300 to-pink-200 flex items-center justify-center overflow-hidden bg-cover relative">
+    <InvitoLayout className="bg-linear-to-b from-pink-200 via-neutral-300 to-pink-200 bg-center flex items-center justify-center overflow-hidden bg-cover relative">
       <motion.div
         className="absolute -right-20 top-4 w-1/2 h-auto z-30 opacity-20"
         initial={{ opacity: 0, scale: 0.8 }}

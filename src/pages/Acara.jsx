@@ -11,7 +11,7 @@ export default function Acara() {
 
   return (
     <InvitoLayout
-      className="bg-pink-600 bg-cover relative flex justify-center items-center"
+      className="bg-pink-600 bg-cover bg-center relative flex justify-center items-center"
       style={{
         backgroundImage:
           "url('https://wedding-pahmi-azizah.vercel.app/images/bg-wedding.jpg')",

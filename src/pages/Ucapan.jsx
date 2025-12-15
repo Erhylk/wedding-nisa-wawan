@@ -19,7 +19,7 @@ export default function FormUcapan() {
   return (
     <>
       <InvitoLayout
-        className="bg-pink-100 relative flex flex-col justify-start items-center py-16 px-4"
+        className="bg-pink-100 bg-cover bg-center relative flex flex-col justify-start items-center py-16 px-4"
         style={{ backgroundImage: "url('/images/bg-form.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/20" />

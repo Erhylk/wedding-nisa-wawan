@@ -15,7 +15,7 @@ export default function Intro() {
 
   return (
     <InvitoLayout
-      className="bg-pink-200 bg-cover relative flex justify-center items-center"
+      className="bg-pink-200 bg-cover bg-center relative flex justify-center items-center"
       style={{
         backgroundImage:
           "url('https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fbg-top.jpg&w=1920&q=75')",

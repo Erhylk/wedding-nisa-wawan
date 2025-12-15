@@ -25,7 +25,7 @@ export default function Cerita() {
 
   return (
     <InvitoLayout
-      className="bg-linear-to-b from-purple-200 via-pink-200 to-pink-100 flex flex-col justify-center items-center relative bg-cover"
+      className="bg-linear-to-b from-purple-200 via-pink-200 to-pink-100 flex flex-col justify-center items-center relative bg-cover bg-center"
       style={{
         backgroundImage:
           "url('https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Background%20Cover.jpg')",
