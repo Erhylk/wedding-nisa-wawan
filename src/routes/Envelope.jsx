@@ -11,6 +11,7 @@ export default function Envelope() {
   const guest = useInvitationStore((s) => s.guest);
   const setGuest = useInvitationStore((s) => s.setGuest);
   const setOpened = useInvitationStore((s) => s.setOpened);
+  const enableMusic = useInvitationStore((s) => s.enableMusic);
 
   useEffect(() => {
     const guestData = getGuestFromQuery();
@@ -19,6 +20,7 @@ export default function Envelope() {
 
   const openInvitation = async () => {
     setOpened(true);
+    enableMusic();
     navigate("/invitation/intro", { replace: true }, 50);
   };
 

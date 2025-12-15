@@ -76,7 +76,7 @@ export default function FormUcapan() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 bg-pink-800 hover:bg-pink-600 disabled:opacity-60 text-white font-bold py-3 rounded-full transition"
+            className="mt-2 bg-pink-800 hover:bg-pink-600 disabled:opacity-60 text-white font-bold py-3 rounded-full transition hover:cursor-pointer disabled:cursor-not-allowed"
           >
             {loading ? "Mengirim..." : "Kirim Ucapan"}
           </button>

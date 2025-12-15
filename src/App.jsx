@@ -9,6 +9,7 @@ import Acara from "./pages/Acara";
 import Pengantin from "./pages/Pengantin";
 import Ucapan from "./pages/Ucapan";
 import Galeri from "./pages/Galeri";
+import { AudioProvider } from "./providers/AudioProvider";
 
 function InvitationGuard({ children }) {
   const opened = useInvitationStore((s) => s.opened);
@@ -18,26 +19,28 @@ function InvitationGuard({ children }) {
 
 export default function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Envelope />} />
-        <Route
-          path="/invitation"
-          element={
-            <InvitationGuard>
-              <InvitationLayout />
-            </InvitationGuard>
-          }
-        >
-          <Route index element={<Navigate to="intro" replace />} />
-          <Route path="intro" element={<Intro />} />
-          <Route path="pengantin" element={<Pengantin />} />
-          <Route path="acara" element={<Acara />} />
-          <Route path="galeri" element={<Galeri />} />
-          <Route path="ucapan" element={<Ucapan />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </HashRouter>
+    <AudioProvider>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Envelope />} />
+          <Route
+            path="/invitation"
+            element={
+              <InvitationGuard>
+                <InvitationLayout />
+              </InvitationGuard>
+            }
+          >
+            <Route index element={<Navigate to="intro" replace />} />
+            <Route path="intro" element={<Intro />} />
+            <Route path="pengantin" element={<Pengantin />} />
+            <Route path="acara" element={<Acara />} />
+            <Route path="galeri" element={<Galeri />} />
+            <Route path="ucapan" element={<Ucapan />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </HashRouter>
+    </AudioProvider>
   );
 }

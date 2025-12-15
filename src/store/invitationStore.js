@@ -6,12 +6,14 @@ export const useInvitationStore = create(
     (set) => ({
       guest: null,
       opened: false,
-      musicPlaying: true,
+      musicEnabled: false,
 
       setGuest: (guest) => set({ guest }),
       setOpened: (opened) => set({ opened }),
-      toggleMusic: () =>
-        set((state) => ({ musicPlaying: !state.musicPlaying })),
+
+      enableMusic: () => set({ musicEnabled: true }),
+      disableMusic: () => set({ musicEnabled: false }),
+      toggleMusic: () => set((s) => ({ musicEnabled: !s.musicEnabled })),
     }),
     {
       name: "invitation-store",
