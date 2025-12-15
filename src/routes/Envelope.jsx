@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 import { getGuestFromQuery } from "../utils/getGuestFromQuery";
 import { useInvitationStore } from "../store/invitationStore";
 import Verse from "../components/Verse";
+import {
+  BRIDE_NICK_NAME,
+  GROOM_NICK_NAME,
+  WEDDING_DATE,
+} from "../constants/data";
+import { formatSimpleWeddingDate } from "../utils/date";
 
 export default function Envelope() {
   const navigate = useNavigate();
@@ -36,6 +42,14 @@ export default function Envelope() {
         }}
       >
         <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute top-16 flex flex-col justify-center items-center text-center text-pink-200">
+          <p className="text-5xl lg:text-7xl tracking-widest hidden lg:block">
+            {GROOM_NICK_NAME.charAt(0)} & {BRIDE_NICK_NAME.charAt(0)}
+          </p>
+          <p className="font-bold lg:text-4xl text-3xl text-neutral-100 px-4 py-1 mt-2 border-2 lg:border-none border-neutral-100">
+            {formatSimpleWeddingDate(WEDDING_DATE)}
+          </p>
+        </div>
 
         <motion.div
           className="absolute -right-20 -top-20 w-1/2 h-auto animate-sway"

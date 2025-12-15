@@ -13,6 +13,22 @@ export const BRIDE_PHOTO =
 export const TEXT_INTRO =
   "Dengan penuh rasa syukur kepada Allah Subhanahu wa ta’ala, kami mengundang Bapak/Ibu/Saudara(i) untuk hadir dan memberikan doa restu dalam acara pernikahan kami.";
 export const WEDDING_DATE = "2026-01-12T09:00:00";
+export const EVENTS = [
+  {
+    title: "Akad Nikah",
+    time: "09.00 WIB",
+    location: "Masjid Al-Hikmah",
+    description: "Doa dan sakralitas dalam prosesi akad nikah",
+    map: "https://goo.gl/maps/xxxxxxxxxxx",
+  },
+  {
+    title: "Resepsi / Jamuan",
+    time: "11.00 – 14.00 WIB",
+    location: "Gedung Serba Guna",
+    description: "Ramah tamah, hiburan, dan jamuan bagi para tamu",
+    map: "https://goo.gl/maps/yyyyyyyyyyy",
+  },
+];
 export const GALLERY_PHOTOS = [
   "https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgallery-2.jpg&w=1920&q=75",
   "https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgallery-1.jpg&w=1920&q=75",
