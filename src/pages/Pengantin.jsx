@@ -7,6 +7,8 @@ import {
   GROOM_FATHER_NAME,
   GROOM_FULL_NAME,
   GROOM_MOTHER_NAME,
+  GROOM_PHOTO,
+  BRIDE_PHOTO,
 } from "../constants/data";
 
 const container = {
@@ -125,7 +127,7 @@ export default function Pengantin() {
           <motion.img
             variants={photoFloat}
             animate="animate"
-            src="https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgrunge-left.png&w=1920&q=75"
+            src={GROOM_PHOTO}
             alt="Pengantin Pria"
             className="w-32 h-32 rounded-full object-cover border-2 border-white"
           />
@@ -151,7 +153,7 @@ export default function Pengantin() {
           <motion.img
             variants={photoFloat}
             animate="animate"
-            src="https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgrunge-right.png&w=1920&q=75"
+            src={BRIDE_PHOTO}
             alt="Pengantin Wanita"
             className="w-32 h-32 rounded-full object-cover border-2 border-white"
           />
