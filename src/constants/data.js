@@ -20,6 +20,28 @@ export const GALLERY_PHOTOS = [
   "https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fgallery-4.jpg&w=1920&q=75",
   "https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fbg-top.jpg&w=1920&q=75",
 ];
+export const STORIES = [
+  {
+    date: "2023-01",
+    title: "Pertemuan Pertama",
+    description: "Kami bertemu di kampus, saling tersenyum dan mulai mengenal.",
+  },
+  {
+    date: "2023-05",
+    title: "Pertama Kali Jalan Bersama",
+    description: "Menghabiskan waktu bersama dan saling mendukung.",
+  },
+  {
+    date: "2024-02",
+    title: "Lamaran",
+    description: "Momen spesial ketika lamaranku diterima dengan bahagia.",
+  },
+  {
+    date: "2025-12",
+    title: "Hari Pernikahan",
+    description: "Hari bahagia kami, dihadiri keluarga dan sahabat tercinta.",
+  },
+];
 export const GOOGLE_FORM = {
   ACTION_URL:
     "https://docs.google.com/forms/d/e/1FAIpQLScJuc7U3eOL998iBMaMAdxLmNY7TYv6-fmkBViRHIN9L4larg/formResponse",

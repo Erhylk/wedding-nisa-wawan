@@ -1,29 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useLayoutEffect, useState } from "react";
 import InvitoLayout from "../components/InvitoLayout";
-
-const events = [
-  {
-    date: "2023-01",
-    title: "Pertemuan Pertama",
-    description: "Kami bertemu di kampus, saling tersenyum dan mulai mengenal.",
-  },
-  {
-    date: "2023-05",
-    title: "Pertama Kali Jalan Bersama",
-    description: "Menghabiskan waktu bersama dan saling mendukung.",
-  },
-  {
-    date: "2024-02",
-    title: "Lamaran",
-    description: "Momen spesial ketika lamaranku diterima dengan bahagia.",
-  },
-  {
-    date: "2025-12",
-    title: "Hari Pernikahan",
-    description: "Hari bahagia kami, dihadiri keluarga dan sahabat tercinta.",
-  },
-];
+import { STORIES } from "../constants/data";
 
 export default function Cerita() {
   const cardRefs = useRef([]);
@@ -65,7 +43,7 @@ export default function Cerita() {
         </h2>
 
         <div className="relative flex flex-col items-center">
-          {events.map((ev, idx) => (
+          {STORIES.map((ev, idx) => (
             <motion.div
               key={idx}
               className="relative flex w-full items-start"
@@ -80,7 +58,7 @@ export default function Cerita() {
                   transition={{ duration: 0.5 }}
                 />
                 {/* Garis ke bawah */}
-                {idx < events.length - 1 && (
+                {idx < STORIES.length - 1 && (
                   <motion.div
                     className="w-1 bg-pink-400"
                     initial={{ height: 0 }}
