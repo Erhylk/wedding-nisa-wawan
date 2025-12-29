@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence, useAnimationFrame } from "framer-motion";
 import InvitoLayout from "../components/InvitoLayout";
 import { GALLERY_PHOTOS } from "../constants/data";
@@ -6,12 +6,18 @@ import { GALLERY_PHOTOS } from "../constants/data";
 export default function Galeri() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [x, setX] = useState(0);
+  const sliderRef = useRef(null);
 
-  // kecepatan diperlambat 1/2
+  // seamless infinite scroll (tanpa jeda)
   useAnimationFrame((_, delta) => {
+    const speed = 0.07; // kecepatan
     setX((prev) => {
-      const next = prev - delta * 0.080; // ⬅️ lebih lambat
-      return next <= -1000 ? 0 : next;
+      if (!sliderRef.current) return prev;
+
+      const width = sliderRef.current.scrollWidth / 2;
+      const next = prev - delta * speed;
+
+      return next <= -width ? 0 : next;
     });
   });
 
@@ -35,10 +41,11 @@ export default function Galeri() {
         Galeri
       </motion.h2>
 
-      {/* SLIDER CENTER */}
+      {/* SLIDER */}
       <div className="relative w-full flex justify-center overflow-hidden z-10">
         <motion.div
-          className="flex gap-2"
+          ref={sliderRef}
+          className="flex gap-7"
           style={{ x }}
         >
           {[...GALLERY_PHOTOS, ...GALLERY_PHOTOS].map((photo, i) => (
@@ -46,10 +53,6 @@ export default function Galeri() {
               key={i}
               className="w-70 h-110 rounded-2xl overflow-hidden shadow-lg cursor-pointer flex-shrink-0"
               whileHover={{ scale: 1.05 }}
-              animate={{
-                scale: i === Math.floor(GALLERY_PHOTOS.length / 2) ? 1.15 : 0.9,
-              }}
-              transition={{ duration: 0.5 }}
               onClick={() => setSelectedPhoto(photo)}
             >
               <img
