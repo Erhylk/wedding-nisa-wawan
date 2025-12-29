@@ -25,9 +25,19 @@ export default function Envelope() {
   }, [setGuest]);
 
   const openInvitation = async () => {
-    setOpened(true);
-    enableMusic();
-    navigate("/invitation/intro", { replace: true }, 50);
+  // masuk fullscreen
+  const el = document.documentElement;
+  if (el.requestFullscreen) {
+    await el.requestFullscreen();
+  } else if (el.webkitRequestFullscreen) { // Safari
+    await el.webkitRequestFullscreen();
+  } else if (el.msRequestFullscreen) { // IE11
+    await el.msRequestFullscreen();
+  }
+
+  setOpened(true);       // state buka undangan
+  enableMusic();         // mainkan musik
+  navigate("/invitation/intro", { replace: true }); // navigasi
   };
 
   return (
