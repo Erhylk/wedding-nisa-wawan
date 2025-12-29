@@ -1,16 +1,28 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimationFrame } from "framer-motion";
 import InvitoLayout from "../components/InvitoLayout";
 import { GALLERY_PHOTOS } from "../constants/data";
 
 export default function Galeri() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [x, setX] = useState(0);
+
+  // kecepatan diperlambat 1/2
+  useAnimationFrame((_, delta) => {
+    setX((prev) => {
+      const next = prev - delta * 0.080; // ⬅️ lebih lambat
+      return next <= -1000 ? 0 : next;
+    });
+  });
 
   return (
-    <InvitoLayout className="bg-linear-to-b from-purple-200 via-pink-200 to-pink-100 bg-cover relative flex flex-col items-center py-12 px-4 bg-neutral-200 bg-cover bg-center relative flex items-center"
+    <InvitoLayout
+      className="relative flex flex-col items-center py-20 px-4 overflow-hidden"
       style={{
         backgroundImage:
           "url('https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Background%20Cover.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="absolute inset-0 bg-black/20" />
@@ -19,35 +31,42 @@ export default function Galeri() {
         className="text-4xl font-bold text-pink-700 mb-12 relative z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
       >
         Galeri
       </motion.h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 relative z-10 w-full max-w-6xl">
-        {GALLERY_PHOTOS.map((photo, index) => (
-          <motion.div
-            key={index}
-            className="overflow-hidden rounded-2xl shadow-lg cursor-pointer"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
-            onClick={() => setSelectedPhoto(photo)}
-          >
-            <img
-              src={photo}
-              alt={`Gallery ${index + 1}`}
-              className="w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-            />
-          </motion.div>
-        ))}
+      {/* SLIDER CENTER */}
+      <div className="relative w-full flex justify-center overflow-hidden z-10">
+        <motion.div
+          className="flex gap-2"
+          style={{ x }}
+        >
+          {[...GALLERY_PHOTOS, ...GALLERY_PHOTOS].map((photo, i) => (
+            <motion.div
+              key={i}
+              className="w-70 h-110 rounded-2xl overflow-hidden shadow-lg cursor-pointer flex-shrink-0"
+              whileHover={{ scale: 1.05 }}
+              animate={{
+                scale: i === Math.floor(GALLERY_PHOTOS.length / 2) ? 1.15 : 0.9,
+              }}
+              transition={{ duration: 0.5 }}
+              onClick={() => setSelectedPhoto(photo)}
+            >
+              <img
+                src={photo}
+                alt={`Gallery ${i}`}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Lightbox */}
+      {/* ZOOM */}
       <AnimatePresence>
         {selectedPhoto && (
           <motion.div
-            className="fixed inset-0 bg-black/70 flex justify-center items-center z-50"
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -55,13 +74,12 @@ export default function Galeri() {
           >
             <motion.img
               src={selectedPhoto}
-              alt="Selected"
-              className="max-h-[90%] max-w-[90%] rounded-2xl shadow-lg"
-              initial={{ scale: 0.8 }}
+              className="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl"
+              initial={{ scale: 0.7 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
+              exit={{ scale: 0.7 }}
               transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()} // supaya klik foto tidak menutup modal
+              onClick={(e) => e.stopPropagation()}
             />
           </motion.div>
         )}
