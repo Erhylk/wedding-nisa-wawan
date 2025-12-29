@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Countdown from "../components/CountDown";
+import Countdown from "../components/Countdown";
 import InvitoLayout from "../components/InvitoLayout";
 import { EVENTS, WEDDING_DATE } from "../constants/data";
 import { formatWeddingDate } from "../utils/date";
