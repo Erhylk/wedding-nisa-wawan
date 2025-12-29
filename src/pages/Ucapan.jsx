@@ -36,7 +36,7 @@ export default function FormUcapan() {
         {/* <div className="absolute inset-0 bg-black/20" /> */}
 
         <motion.h2
-          className="text-3xl font-bold text-pink-600 placeholder-pink-400 mb-6 relative z-10"
+          className="text-3xl font-bold text-pink-400 placeholder-pink-400 mb-6 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
