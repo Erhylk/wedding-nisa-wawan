@@ -42,8 +42,6 @@ export default function Lokasi() {
         {/* ❤️ Judul Heartbeat */}
         <motion.h2
           className="text-3xl font-bold text-pink-100 mb-6 text-center"
-          variants={heartbeat}
-          animate="animate"
         >
           Lokasi Resepsi
         </motion.h2>
