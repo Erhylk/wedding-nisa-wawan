@@ -36,7 +36,7 @@ export default function FormUcapan() {
         {/* <div className="absolute inset-0 bg-black/20" /> */}
 
         <motion.h2
-          className="text-3xl font-bold text-pink-800 mb-6 relative z-10"
+          className="text-3xl font-bold text-pink-600 placeholder-pink-400 mb-6 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -56,7 +56,7 @@ export default function FormUcapan() {
           ) : (
             messages.map((msg, i) => (
               <div key={i} className="p-3 rounded-lg bg-white/70 shadow-sm">
-                <p className="font-semibold text-pink-800">{msg.name}</p>
+                <p className="font-semibold text-pink-600 placeholder-pink-400">{msg.name}</p>
                 <p className="text-gray-800 text-sm">{msg.message}</p>
               </div>
             ))
@@ -70,7 +70,7 @@ export default function FormUcapan() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-white drop-shadow">
             Mengirim sebagai:{" "}
             <span className="font-semibold">
               {guestName || "Tamu Undangan"}
