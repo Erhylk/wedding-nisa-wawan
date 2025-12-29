@@ -3,6 +3,7 @@ import Countdown from "../components/CountDown";
 import InvitoLayout from "../components/InvitoLayout";
 import { EVENTS, WEDDING_DATE } from "../constants/data";
 import { formatWeddingDate } from "../utils/date";
+import { title } from "framer-motion/client";
 
 export default function Acara() {
   const cardAnimation = {
@@ -38,7 +39,7 @@ export default function Acara() {
       className="bg-pink-600 bg-cover bg-center relative flex justify-center items-center"
       style={{
         backgroundImage:
-          "url('https://wedding-pahmi-azizah.vercel.app/images/bg-wedding.jpg')",
+        "url('/images/bg-acara.jpeg')",
       }}
     >
       <div className="absolute inset-0 backdrop-blur-xs bg-black/20" />
@@ -75,7 +76,7 @@ export default function Acara() {
         <Countdown />
 
         <motion.div
-          className="flex flex-col gap-10 mt-6 mb-3"
+          className="flex flex-col gap-5 mt-6 mb-3"
           variants={container}
           initial="hidden"
           animate="show"
@@ -90,16 +91,21 @@ export default function Acara() {
                 <p>{ev.description}</p>
               </div>
 
-              <motion.a
-                href={ev.map}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-4 inline-block px-4 py-2 bg-pink-400 rounded-full hover:bg-pink-500 transition"
-              >
-                Lihat Lokasi
-              </motion.a>
+             {ev.title === "Resepsi" && (
+                <div className="flex justify-center">
+                  <motion.a
+                    href={ev.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 inline-block px-4 py-2 bg-pink-400 text-white rounded-full hover:bg-pink-500 transition"
+                  >
+                    Lihat Lokasi
+                  </motion.a>
+                </div>
+              )}
+
             </motion.section>
           ))}
         </motion.div>

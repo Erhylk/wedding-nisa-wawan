@@ -76,9 +76,9 @@ export default function Envelope() {
           transition={{ duration: 1, delay: 0.4 }}
         >
           <p className="text-4xl font-bold">
-            Barsan
+            Nisa
             <span className="text-pink-200 text-3xl px-2"> &amp; </span>
-            Azizah
+            Wawan
           </p>
           <p className="text-2xl text-pink-100">are getting married</p>
         </motion.div>

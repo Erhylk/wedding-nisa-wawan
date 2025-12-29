@@ -7,7 +7,12 @@ export default function Galeri() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   return (
-    <InvitoLayout className="bg-linear-to-b from-purple-200 via-pink-200 to-pink-100 bg-cover relative flex flex-col items-center py-12 px-4">
+    <InvitoLayout className="bg-linear-to-b from-purple-200 via-pink-200 to-pink-100 bg-cover relative flex flex-col items-center py-12 px-4 bg-neutral-200 bg-cover bg-center relative flex items-center"
+      style={{
+        backgroundImage:
+          "url('https://raw.githubusercontent.com/Invitato/public/main/invitato.net/template-bayumeysya/Background%20Cover.jpg')",
+      }}
+    >
       <div className="absolute inset-0 bg-black/20" />
 
       <motion.h2

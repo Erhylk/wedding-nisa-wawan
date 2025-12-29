@@ -18,7 +18,7 @@ export default function Intro() {
       className="bg-pink-200 bg-cover bg-center relative flex justify-center items-center"
       style={{
         backgroundImage:
-          "url('https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fbg-top.jpg&w=1920&q=75')",
+          "url('/images/bg-intro.jpeg')",
       }}
     >
       <div className="absolute inset-0 backdrop-blur-xs bg-opacity-20 bg-black/30" />
@@ -42,7 +42,7 @@ export default function Intro() {
       </motion.div>
 
       <motion.div
-        className="relative z-20 bg-stone-800/30 backdrop-blur-sm rounded-3xl shadow-lg p-8 max-w-md text-center text-white"
+        className="relative z-20 bg-stone-800/30 backdrop-blur-sm rounded-3xl shadow-lg p-8 max-w-md text-center text-white translate-y-35"
         {...cardAnimation}
       >
         <img
@@ -58,7 +58,7 @@ export default function Intro() {
         <p className="lg:text-lg">{TEXT_INTRO}</p>
 
         <p className="mt-6 text-pink-200 italic">
-          {GROOM_NICK_NAME} &amp; {BRIDE_NICK_NAME}
+           {BRIDE_NICK_NAME} &amp; {GROOM_NICK_NAME}
         </p>
       </motion.div>
     </InvitoLayout>

@@ -22,7 +22,7 @@ export default function Verse({ animated = true }) {
       className="relative w-full text-white bg-pink-200 hidden lg:block py-16 px-16 bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://wedding-pahmi-azizah.vercel.app/_next/image?url=%2Fimages%2Fsquare.jpg&w=1920&q=75')",
+          "url('https://res.cloudinary.com/dredlmtfm/image/upload/v1765716441/desktop2_tscv6w.jpg')",
       }}
     >
       <div className="absolute inset-0 backdrop-blur-xs bg-black/50" />
@@ -32,9 +32,9 @@ export default function Verse({ animated = true }) {
         {...(animated ? textAnimation : {})}
       >
         <p className="text-6xl font-bold">
-          {GROOM_NICK_NAME}
-          <span className="text-pink-200 text-5xl px-2"> &amp; </span>
           {BRIDE_NICK_NAME}
+          <span className="text-pink-200 text-5xl px-2"> &amp; </span>
+          {GROOM_NICK_NAME}
         </p>
         <p className="text-4xl text-pink-100">are getting married</p>
       </TextWrapper>

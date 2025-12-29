@@ -19,10 +19,21 @@ export default function FormUcapan() {
   return (
     <>
       <InvitoLayout
-        className="bg-pink-100 bg-cover bg-center relative flex flex-col justify-start items-center py-16 px-4"
-        style={{ backgroundImage: "url('/images/bg-form.jpg')" }}
+        className="relative bg-cover bg-center flex flex-col justify-start items-center py-16 px-4"
+        style={{
+          backgroundImage:
+          "url('/images/ucapan_1.jpeg')",
+        }}
       >
-        <div className="absolute inset-0 bg-black/20" />
+        {/* 🔵 Background Blur */}
+        <div className="absolute inset-0 backdrop-blur-md bg-black/20" />
+
+        {/* 🔴 Konten */}
+        <div className="relative z-10 w-full">
+        {/* isi konten kamu di sini */}
+        </div>
+
+        {/* <div className="absolute inset-0 bg-black/20" /> */}
 
         <motion.h2
           className="text-3xl font-bold text-pink-800 mb-6 relative z-10"

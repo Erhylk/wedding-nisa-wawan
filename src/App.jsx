@@ -13,6 +13,8 @@ import { AudioProvider } from "./providers/AudioProvider";
 import Cerita from "./pages/Cerita";
 import WeddingGift from "./pages/Gift";
 import Outro from "./pages/Outro";
+import Lokasi from "./pages/Lokasi";
+import Salam from "./pages/Salam";
 
 function InvitationGuard({ children }) {
   const opened = useInvitationStore((s) => s.opened);
@@ -43,6 +45,10 @@ export default function App() {
             <Route path="ucapan" element={<Ucapan />} />
             <Route path="gift" element={<WeddingGift />} />
             <Route path="outro" element={<Outro />} />
+            <Route path="lokasi" element={<Lokasi />} />
+            <Route path="salam" element={<Salam />} />
+            <Route path="lokasi" element={<Lokasi />} />
+            <Route path="salam" element={<Salam />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
