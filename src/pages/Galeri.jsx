@@ -34,7 +34,7 @@ export default function Galeri() {
       <div className="absolute inset-0 bg-black/20" />
 
       <motion.h2
-        className="text-4xl font-bold text-pink-700 mb-12 relative z-10"
+        className="text-4xl font-bold text-pink-200 mb-12 relative z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
