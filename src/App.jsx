@@ -1,4 +1,5 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 import Envelope from "./routes/Envelope";
 import InvitationLayout from "./routes/Invitation";
@@ -16,6 +17,21 @@ import Outro from "./pages/Outro";
 import Lokasi from "./pages/Lokasi";
 import Salam from "./pages/Salam";
 
+/* 🔒 Portrait Lock */
+function PortraitLock() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.startsWith("/invitation")) {
+      if (screen.orientation?.lock) {
+        screen.orientation.lock("portrait").catch(() => {});
+      }
+    }
+  }, [location.pathname]);
+
+  return null;
+}
+
 function InvitationGuard({ children }) {
   const opened = useInvitationStore((s) => s.opened);
   if (!opened) return <Navigate to="/" replace />;
@@ -26,8 +42,11 @@ export default function App() {
   return (
     <AudioProvider>
       <HashRouter>
+        <PortraitLock />
+
         <Routes>
           <Route path="/" element={<Envelope />} />
+
           <Route
             path="/invitation"
             element={
@@ -44,12 +63,11 @@ export default function App() {
             <Route path="cerita" element={<Cerita />} />
             <Route path="ucapan" element={<Ucapan />} />
             <Route path="gift" element={<WeddingGift />} />
+            <Route path="lokasi" element={<Lokasi />} />
+            <Route path="salam" element={<Salam />} />
             <Route path="outro" element={<Outro />} />
-            <Route path="lokasi" element={<Lokasi />} />
-            <Route path="salam" element={<Salam />} />
-            <Route path="lokasi" element={<Lokasi />} />
-            <Route path="salam" element={<Salam />} />
           </Route>
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </HashRouter>
